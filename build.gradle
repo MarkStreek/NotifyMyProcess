@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+application {
+    mainClass = 'streevdm.NotifyMyProcess.Main'
+}
+
+group = 'streevdm.NotifyMyProcess'
+version = '1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.1'
+    implementation 'org.apache.httpcomponents.core5:httpcore5:5.1'
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'streevdm.NotifyMyProcess.Main'
+        )
+    }
+}
